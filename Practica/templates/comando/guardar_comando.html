@@ -1,0 +1,49 @@
+{% extends 'template.html' %}
+{% block content %}
+<style>
+    body {
+      background-color: #f8f9fa; 
+      padding: 20px;
+    }
+    .formulario {
+      background-color: #ffffff; 
+      border-radius: 8px; 
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .btn-azul {
+      background-color: #007bff; 
+      color: #ffffff; 
+      border: none; 
+    }
+    .btn-azul:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <div class="container formulario">
+    <h2 class="mb-4">Formulario de Contacto</h2>
+    <form action="/comando/guardar/guardar_comando" method="post">
+      <div class="form-group">
+        <label for="nombre_usuario">Nombre:</label>
+        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Ingrese su nombre">
+      </div>
+      <div class="form-group">
+        <label for="apellido_usuario">Apellido:</label>
+        <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Ingrese su apellido">
+      </div>
+      <div class="form-group">
+        <label for="comando">Comando:</label>
+        <input type="text" class="form-control" id="comando" name="comando" placeholder="Ingrese el comando">
+      </div>
+      <div class="form-group">
+        <label for="lenguaje">Lenguaje:</label>
+        <input type="text" class="form-control" id="lenguaje" name="lenguaje" placeholder="Ingrese el Lenguaje">
+      </div>
+      <button type="submit" class="btn btn-azul">Enviar</button>
+    </form>
+  </div>
+
+</body>
+
+{% endblock %}

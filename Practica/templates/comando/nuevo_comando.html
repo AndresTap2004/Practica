@@ -1,0 +1,34 @@
+{% extends 'template.html' %} {% block content %}
+<body class="bg-gray-100">
+    <a  href="/historial" class="w-full bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Regresar</a>
+    <div class="max-w-md mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Formulario Simple</h2>
+        
+        <form action="/historial/guardar" method="post">
+            <div class="mb-4">
+                <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
+                <input type="text" id="apellido_usuario" name="apellido_usuario" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="comando" class="block text-sm font-medium text-gray-700">Comando</label>
+                <input type="text" id="comando" name="comando" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="lenguaje" class="block text-sm font-medium text-gray-700">Lenguaje</label>
+                <input type="text" id="lenguaje" name="lenguaje" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <button type="submit" class="w-full bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

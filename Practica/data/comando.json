@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "nombre_usuario": "Andres",
+    "apellido_usuario": "Tapia",
+    "comando": "ls",
+    "lenguaje": "js"
+  },
+  {
+    "id": 2,
+    "nombre_usuario": "Juan",
+    "apellido_usuario": "Perez",
+    "comando": "pwd",
+    "lenguaje": "python"
+  },
+  {
+    "id": 3,
+    "nombre_usuario": "Maria",
+    "apellido_usuario": "Gonzalez",
+    "comando": "cd",
+    "lenguaje": "bash"
+  },
+  {
+    "id": 4,
+    "nombre_usuario": "Andres",
+    "apellido_usuario": "Lopez",
+    "comando": "mkdir",
+    "lenguaje": "git"
+  },
+  {
+    "id": 5,
+    "nombre_usuario": "Laura",
+    "apellido_usuario": "Martinez",
+    "comando": "echo",
+    "lenguaje": "python"
+  },
+  {
+    "id": 6,
+    "nombre_usuario": "Pedro",
+    "apellido_usuario": "Ramirez",
+    "comando": "cat",
+    "lenguaje": "js"
+  },
+  {
+    "id": 7,
+    "nombre_usuario": "Ana",
+    "apellido_usuario": "Sanchez",
+    "comando": "dir",
+    "lenguaje": "bash"
+  },
+  {
+    "id": 8,
+    "nombre_usuario": "Andres",
+    "apellido_usuario": "Diaz",
+    "comando": "dir",
+    "lenguaje": "python"
+  },
+  {
+    "id": 9,
+    "nombre_usuario": "Elena",
+    "apellido_usuario": "Tapia",
+    "comando": "rm",
+    "lenguaje": "git"
+  },
+  {
+    "id": 10,
+    "nombre_usuario": "Sofia",
+    "apellido_usuario": "Tapia",
+    "comando": "mv",
+    "lenguaje": "js"
+  },
+  {
+    "id": 11,
+    "nombre_usuario": "Diego",
+    "apellido_usuario": "Torres",
+    "comando": "date",
+    "lenguaje": "bash"
+  },
+  {
+    "id": 12,
+    "nombre_usuario": "Luis",
+    "apellido_usuario": "Gomez",
+    "comando": "cd",
+    "lenguaje": "python"
+  },
+  {
+    "id": 13,
+    "nombre_usuario": "Carmen",
+    "apellido_usuario": "Tapia",
+    "comando": "touch",
+    "lenguaje": "js"
+  },
+  {
+    "id": 14,
+    "nombre_usuario": "Martin",
+    "apellido_usuario": "Castillo",
+    "comando": "git",
+    "lenguaje": "git"
+  },
+  {
+    "id": 15,
+    "nombre_usuario": "Valeria",
+    "apellido_usuario": "Fernandez",
+    "comando": "dir",
+    "lenguaje": "bash"
+  },
+  {
+    "id": 16,
+    "nombre_usuario": "Adriana",
+    "apellido_usuario": "Tapia",
+    "comando": "main.py",
+    "lenguaje": "Python"
+  },
+  {
+    "id": 17,
+    "nombre_usuario": "Edith",
+    "apellido_usuario": "Mendez",
+    "comando": "from dev",
+    "lenguaje": "js"
+  }
+]

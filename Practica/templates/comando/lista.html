@@ -1,0 +1,218 @@
+{% extends 'template.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bg-secondary rounded-lg p-4 mb-4">
+        <form id="ordenar_listado">
+          <div class="mb-3">
+            <label for="tipo_ordenamiento" class="form-label text-white"
+              >Método de Ordenamiento</label
+            >
+            <select id="tipo_ordenamiento" class="form-select">
+              <option value="ordenamiento_shell">Método Shell Sort</option>
+              <option value="ordenamiento_merge">Método Merge Sort</option>
+              <option value="ordenamiento_quick">Método Quick Sort</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="orden" class="form-label text-white">Orden</label>
+            <select id="orden" class="form-select">
+              <option value="1">Orden Ascendente</option>
+              <option value="2">Orden Descendente</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="atributo" class="form-label text-white"
+              >Atributo a Ordenar</label
+            >
+            <select id="atributo" class="form-select">
+              <option value="_nombre_usuario">Nombre</option>
+              <option value="_apellido_usuario">Apellido</option>
+              <option value="_comando">Comando</option>
+              <option value="_lenguaje">Lenguaje</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">ORDENAR</button>
+        </form>
+      </div>
+
+      <div class="bg-secondary rounded-lg p-4 mb-4">
+        <form id="buscar_comando">
+          <div class="mb-3">
+            <label for="busqueda_por_atributo" class="form-label text-white"
+              >Atributo de Búsqueda</label
+            >
+            <select id="busqueda_por_atributo" class="form-select">
+              <option value="_nombre_usuario">Nombre</option>
+              <option value="_apellido_usuario">Apellido</option>
+              <option value="_comando">Comando</option>
+              <option value="_lenguaje">Lenguaje</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="tipo_busqueda" class="form-label text-white"
+              >Tipo de Búsqueda</label
+            >
+            <select id="tipo_busqueda" class="form-select">
+              <option value="lineal_binaria">Búsqueda Lineal Binaria</option>
+              <option value="binaria">Búsqueda Binaria</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="value" class="form-label text-white"
+              >Valor a Buscar</label
+            >
+            <input
+              type="text"
+              id="value"
+              class="form-control"
+              placeholder="Valor a buscar"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">BUSCAR</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="col-md-8 mb-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="/comando/agregar_comando" class="btn btn-primary w-100"
+                >Nuevo Comando</a
+              >
+            </div>
+            <div class="col-md-4">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 text-indigo-400"
+              >
+                Comandos
+              </h2>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table id="tabla" class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th class="text-center">Nombre</th>
+              <th class="text-center">Apellido</th>
+              <th class="text-center">Comando</th>
+              <th class="text-center">Lenguaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in lista %}
+            <tr>
+              <td class="text-center">{{ item.nombre_usuario }}</td>
+              <td class="text-center">{{ item.apellido_usuario }}</td>
+              <td class="text-center">{{ item.comando }}</td>
+              <td class="text-center">{{ item.lenguaje }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#ordenar_listado").submit(function (event) {
+      event.preventDefault();
+      ordenamiento();
+    });
+  });
+
+  $(document).ready(function () {
+    $("#buscar_comando").submit(function (event) {
+      event.preventDefault();
+      busqueda();
+    });
+  });
+
+  function ordenamiento() {
+    let tipo_ordenamiento = $("#tipo_ordenamiento").val();
+    let orden = $("#orden").val();
+    let atributo = $("#atributo").val();
+
+    let url =
+      "/comando/sort/" + tipo_ordenamiento + "/" + orden + "/" + atributo;
+
+    $.ajax({
+      method: "GET",
+      url: url,
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        if (data.code == 200) {
+          let html = "";
+          $.each(data.data, function (i, item) {
+            html += `
+            <tr class="text-white">
+              <td class="text-center">${item.nombre_usuario}</td>
+              <td class="text-center">${item.apellido_usuario}</td>
+              <td class="text-center">${item.comando}</td>
+              <td class="text-center">${item.lenguaje}</td>
+            </tr>`;
+          });
+          $("#tabla tbody").html(html);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr, status, error); 
+      },
+    });
+  }
+
+  function busqueda() {
+    let tipo_busqueda = $("#tipo_busqueda").val();
+    let busqueda_por_atributo = $("#busqueda_por_atributo").val();
+    let value = $("#value").val();
+    let url =
+      "/comando/search/" +
+      tipo_busqueda +
+      "/" +
+      busqueda_por_atributo +
+      "/" +
+      value;
+
+    $.ajax({
+      method: "GET",
+      url: url,
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+        if (data.code == 200) {
+          let html = "";
+          $.each(data.data, function (i, item) {
+            html += `
+            <tr class="text-white">
+              <td class="text-center">${item.nombre_usuario}</td>
+              <td class="text-center">${item.apellido_usuario}</td>
+              <td class="text-center">${item.comando}</td>
+              <td class="text-center">${item.lenguaje}</td>
+            </tr>`;
+          });
+          $("#tabla tbody").html(html);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr, status, error); 
+      },
+    });
+  }
+</script>
+
+{% endblock %}
